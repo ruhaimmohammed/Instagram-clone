@@ -55,7 +55,7 @@ function Header() {
                     <UserGroupIcon className='navBtn' />
                     <HeartIcon className='navBtn' />
 
-                    <img src="https://links.papareact.com/3ke" alt="Profile Picture" className='h-10 rounded-full cursor-pointer' />
+                    <img src="https://pbs.twimg.com/profile_images/1482805067900424192/8xm4ZAyk_400x400.jpg" alt="Profile Picture" className='h-10 rounded-full cursor-pointer' />
                 </div>
 
             </div>

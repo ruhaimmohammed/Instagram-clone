@@ -1,4 +1,5 @@
 import React from 'react';
+import MiniProfile from './MiniProfile';
 import Posts from './Posts';
 import Stories from './Stories';
 
@@ -11,7 +12,7 @@ function Feed() {
             </section>
 
             <section>
-
+                <MiniProfile />
             </section>
         </main>
     );
