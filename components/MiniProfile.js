@@ -1,16 +1,18 @@
-import React from 'react';
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function MiniProfile() {
+  const { data: session } = useSession();
+
   return <div className='flex items-center justify-between mt-14 ml-10'>
-      <img className='w-16 h-16 rounded-full border p-[2px]' src="https://pbs.twimg.com/profile_images/1482805067900424192/8xm4ZAyk_400x400.jpg" alt="profile photo" />
+      <img className='w-16 h-16 rounded-full border p-[2px]' src={ session ? session?.user?.image : "https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"} alt="profile" />
 
         <div className='flex-1 mx-4'>
-            <h2 className='font-bold'>ruhaimmohammed</h2>
-            <h3 className='text-sm'>Welcome to Instagram</h3>
+            <h2 className='font-bold'>{ session?.user?.username }</h2>
+            <h3 className='text-sm'>{ session ? "Welcome to Instagram" : "Please sign in"}</h3>
         </div>
 
-        <button className='text-blue-400 text-sm font-semibold ml-5'>
-            Sign out
+        <button onClick={ session ? signOut : signIn} className='text-blue-400 text-sm font-semibold ml-5'>
+            { session ? "Sign out" : "Sign in"}
         </button>
   </div>;
 }
