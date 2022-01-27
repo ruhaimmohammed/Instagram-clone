@@ -1,5 +1,6 @@
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import Moment from 'react-moment';
 import { db } from '../firebase';
 import Post from './Post';
 
@@ -17,18 +18,24 @@ function Posts() {
             [db]
     );
 
-    
+
     return (
         <div>
             {posts.map((post) => (
-                <Post
-                    key={post.id}
-                    id={post.id}
-                    username={post.data().username}
-                    userImg={post.data().profileImg}
-                    img={post.data().image}
-                    caption={post.data().caption}
-                />
+                <div key={post.id}>
+                    <Post
+                        key={post.id}
+                        id={post.id}
+                        username={post.data().username}
+                        userImg={post.data().profileImg}
+                        img={post.data().image}
+                        caption={post.data().caption}
+                    />
+
+                    <Moment className='ml-2 text-s' fromNow>
+                        {post.data().timestamp?.toDate()}
+                    </Moment>
+                </div>
             ))}
         </div>
     );
