@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import {
     SearchIcon,
     PlusCircleIcon,
@@ -18,6 +18,8 @@ function Header() {
     const { data: session } = useSession();
     const [open, setOpen] = useRecoilState(modalState);
     const router = useRouter();
+    const [c, setC] = useState(true);
+
 
     return (
         <div className='shadow-sm border-b bg-white sticky top-0 z-50'>
@@ -51,7 +53,23 @@ function Header() {
 
                 <div className='flex items-center justify-end space-x-4'>
                     <HomeIcon onClick={() => router.push('/')} className='navBtn' />
-                    <MenuIcon className='h-6 md:hidden cursor-pointer' />
+
+                    <div className='relative'>
+                        <MenuIcon onClick={() => {c ? setC(false) : setC(true)}} className='h-6 md:hidden cursor-pointer' />
+                        <div
+                        onClick={() => setOpen(true)} 
+                        className=
+                            {
+                                c ?
+                                'hidden'
+                                :
+                                'absolute md:hidden bg-white flex items-center p-2 shadow-lg border -left-2 rounded-lg transition-0.5s cursor-pointer'
+                            
+                            }>
+                                <PlusCircleIcon className='navBtnMb' />
+                                <p className='ml-2'>Post</p>
+                        </div>
+                    </div>
 
                     {session ? (
                         <>

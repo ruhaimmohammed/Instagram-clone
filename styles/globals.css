@@ -26,6 +26,11 @@ a {
     transition-all duration-150 ease-out
   }
 
+  .navBtnMb {
+    @apply h-6 md:inline-flex
+    cursor-pointer
+  }
+
   .btn {
     @apply h-7 cursor-pointer ;
   }
