@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApp, getApps } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -9,18 +8,16 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCr4VcFyCZYEJTGUzYrsKhiA-1UL_fdOAE",
-  authDomain: "instagram-clone-dfc5b.firebaseapp.com",
-  projectId: "instagram-clone-dfc5b",
-  storageBucket: "instagram-clone-dfc5b.appspot.com",
-  messagingSenderId: "810548064408",
-  appId: "1:810548064408:web:e2461acee63b7acacee0ed",
-  measurementId: "G-ZJKSZV1HRG"
+apiKey: "AIzaSyD6m8U0WqMcJHI2E33hdG1IiUb-W_DJzuI",
+  authDomain: "insta-clone-8d21c.firebaseapp.com",
+  projectId: "insta-clone-8d21c",
+  storageBucket: "insta-clone-8d21c.appspot.com",
+  messagingSenderId: "718262796990",
+  appId: "1:718262796990:web:3eb1b3d9595686324714ef"
 };
 
 // Initialize Firebase
 const app = !getApps().lenght ? initializeApp(firebaseConfig) : getApp();
-const analytics = getAnalytics(app);
 
 const db = getFirestore();
 const storage = getStorage();

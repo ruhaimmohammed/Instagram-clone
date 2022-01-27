@@ -69,10 +69,12 @@ function Post({ id, username, userImg, img, caption }) {
 
         await addDoc(collection(db, 'posts', id, 'comments'), {
             comment: commentToSend,
-            username: session?.user?.username,
-            userImage: session?.user?.image,
+            username: session.user.username,
+            userImage: session.user.image,
             timestamp: serverTimestamp(),
-        });
+        }
+                );
+
     }
 
     return (
@@ -132,8 +134,21 @@ function Post({ id, username, userImg, img, caption }) {
             {session && (
                 <form className='flex items-center p-4 pb-0'>
                     <EmojiHappyIcon className='btn' />
-                    <input className='bg-gray-50 mx-4 rounded-full border-none flex-1 focus:ring-0 outline-none' value={comment} onChange={e => setComment(e.target.value)} type="text" placeholder='Add a comment...' />
-                    <button type='submit' disabled={!comment.trim()} onClick={sendComment} className="font-semibold text-blue-400">Post</button>
+                    <input 
+                        className='bg-gray-50 mx-4 rounded-full border-none flex-1 focus:ring-0 outline-none' 
+                        value={comment} 
+                        onChange={e => setComment(e.target.value)} 
+                        type="text" 
+                        placeholder='Add a comment...' 
+                    />
+                    <button 
+                        type='submit' 
+                        disabled={!comment.trim()} 
+                        onClick={sendComment} 
+                        className="font-semibold text-blue-400"
+                        >
+                            Post
+                        </button>
                 </form>
             )}
         </div>
