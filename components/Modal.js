@@ -33,10 +33,10 @@ function Modal() {
         const imageRef = ref( storage,`posts/${docRef.id}/image`);
 
         await uploadString(imageRef, selectedFile, "data_url").then(
-             (snapshot) => {
-                getDownloadURL(imageRef).then((url) => {
+            async (snapshot) => {
+                await getDownloadURL(imageRef).then((url) => {
 
-                    updateDoc(doc(db, "posts", docRef.id), {
+                   updateDoc(doc(db, "posts", docRef.id), {
                        image: url,
                    })
                    console.log("url is here >>>>>", url);
