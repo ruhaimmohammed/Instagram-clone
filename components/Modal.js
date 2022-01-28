@@ -30,17 +30,19 @@ function Modal() {
 
         console.log("New doc added", docRef.id);
 
-        const imageRef = ref(storage, `posts/${docRef.id}/image`);
+        const imageRef = ref( storage,`posts/${docRef.id}/image`);
 
         await uploadString(imageRef, selectedFile, "data_url").then(
-            async (snapshot) => {
-                const downloadURL = await getDownloadURL(imageRef);
+             (snapshot) => {
+                getDownloadURL(imageRef).then((url) => {
 
-                await updateDoc(doc(db, 'posts', docRef.id), {
-                    image: downloadURL,
+                    updateDoc(doc(db, "posts", docRef.id), {
+                       image: url,
+                   })
+                   console.log("url is here >>>>>", url);
                 })
-
             });
+
 
         setOpen(false);
         setLoading(false);
@@ -142,6 +144,7 @@ function Modal() {
                                                 type="text"
                                                 ref={captionRef}
                                                 placeholder="Caption"
+                                                required
                                             />
                                         </div>
                                     </div>
