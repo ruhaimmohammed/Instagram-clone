@@ -56,7 +56,7 @@ function Header() {
 
                     <div className='relative'>
                         <MenuIcon onClick={() => {c ? setC(false) : setC(true)}} className='h-6 md:hidden cursor-pointer' />
-                        <div
+                      { session &&  <div
                         onClick={() => setOpen(true)} 
                         className=
                             {
@@ -68,7 +68,7 @@ function Header() {
                             }>
                                 <PlusCircleIcon className='navBtnMb' />
                                 <p className='ml-2'>Post</p>
-                        </div>
+                        </div>}
                     </div>
 
                     {session ? (
@@ -86,7 +86,7 @@ function Header() {
                             <img onClick={signOut} src={session.user.image} alt="Profile Picture" className='h-10 rounded-full cursor-pointer' />
                         </>
                     ) : (
-                        <button onClick={signIn}>Sign In</button>
+                        <button onClick={signIn} className='text-sm' >Sign In</button>
                     )}
 
                 </div>
